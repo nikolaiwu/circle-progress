@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pie progress</title>
+  <style>
+    body {
+      background: #333;
+      display: grid;
+      place-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    #pie-path {
+      transform: rotate(90deg);
+      transform-origin: center;
+      transition: all 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div id="pie">
+    <div>
+      <button onclick="setLength(0)">0</button>
+      <button onclick="setLength(25)">25</button>
+      <button onclick="setLength(50)">50</button>
+      <button onclick="setLength(72)">72</button>
+      <button onclick="setLength(100)">100</button>
+    </div>
+    <svg width="200" height="200">
+      <!-- <circle cx="50" cy="50" r="25" fill="red"/> -->
+      <path
+      id="pie-track"
+      fill="none"
+      stroke="grey"
+      stroke-width="25px"
+      d="
+        M 50, 100
+        a 50,50 0 1,1 100,0
+        a 50,50 0 1,1 -100,0
+        " />
+      <path
+        id="pie-path"
+        fill="none"
+        stroke="cyan"
+        stroke-width="25px"
+        d="
+          M 50, 100
+          a 50,50 0 1,1 100,0
+          a 50,50 0 1,1 -100,0
+          " />
+  </svg>
+
+  </div>
+
+  <script>
+    const pie = document.querySelector('#pie-path');
+    const pieLength = pie.getTotalLength();
+
+    function setLength(percentage) {
+      const percentageLength = pieLength * percentage / 100;
+      console.log(pie);
+      console.log(pieLength);
+      console.log(percentage);
+      console.log(percentageLength);
+
+      pie.style.strokeDasharray = `${percentageLength} ${pieLength}`;
+    }
+
+    window.onload = function() {
+      setLength(100);
+      setTimeout(() => {
+        setLength(2);
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
