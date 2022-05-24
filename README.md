@@ -1,6 +1,7 @@
-# pie
+# Circle progress bar
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue 3 component for circle progress bar using SVG
+![Project screenshot](https://raw.githubusercontent.com/nikolaiwu/circle-progress/main/public/screenshot.png)
 
 ## Recommended IDE Setup
 
